@@ -21,7 +21,7 @@ export default function Task({ index, task, onClickHandler }) {
     }
 
     return (
-        <li className='list-group-item d-flex justify-content-between align-items-center' onMouseOver={handleOnMouseOver} onMouseLeave={handleOnMouseLeave}>
+        <li className='list-group-item d-flex justify-content-between align-items-center shadow-lg' onMouseOver={handleOnMouseOver} onMouseLeave={handleOnMouseLeave}>
             <p className='mb-0'>{task}</p>
             <DeleteButton taskIndex={index} color={buttonColor} onClickHandler={onClickHandler} onDeleteButtonHandler={handleOnDeleteButton}/>
         </li>
