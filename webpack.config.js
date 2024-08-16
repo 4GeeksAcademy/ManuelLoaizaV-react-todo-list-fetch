@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const port = 3000;
 let publicUrl = `ws://localhost:${port}/ws`;
@@ -72,5 +73,6 @@ module.exports = {
     new HtmlWebpackPlugin({
         template: 'template.html'
     }),
+    new Dotenv()
   ]
 };
