@@ -1,29 +1,29 @@
 import React, { useState } from 'react';
-import DeleteButton from './delete-button';
+import DeleteTaskButton from './delete-task-button';
 
-export default function Task({ index, task, onClickHandler }) {
-    const [buttonColor, setButtonColor] = useState('white');
+export default function Task({ task, onClickHandler }) {
+    const [deleteTaskButtonColor, setDeleteTaskButtonColor] = useState('white');
 
     function handleOnMouseOver() {
-        setButtonColor('secondary');
+        setDeleteTaskButtonColor('secondary');
     }
 
     function handleOnMouseLeave() {
-        setButtonColor('white');
+        setDeleteTaskButtonColor('white');
     }
 
-    function handleOnDeleteButton(event) {
+    function handleOnDeleteTaskButton(event) {
         // I had an issue with handleOnMouseOver overwriting the color of this handler from danger to secondary.
         // After googling, I discover this particular event keeps propagating to every ancestor.
         // See https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation
         event.stopPropagation();
-        setButtonColor('danger');
+        setDeleteTaskButtonColor('danger');
     }
 
     return (
         <li className='list-group-item d-flex justify-content-between align-items-center shadow-lg' onMouseOver={handleOnMouseOver} onMouseLeave={handleOnMouseLeave}>
-            <p className='mb-0'>{task}</p>
-            <DeleteButton taskIndex={index} color={buttonColor} onClickHandler={onClickHandler} onDeleteButtonHandler={handleOnDeleteButton}/>
+            <p className='mb-0'>{task.description}</p>
+            <DeleteTaskButton taskId={task.id} color={deleteTaskButtonColor} onClickHandler={onClickHandler} onDeleteTaskButtonHandler={handleOnDeleteTaskButton}/>
         </li>
     );
 };
