@@ -12,10 +12,10 @@ export default function List({ tasks, setTasks }) {
         const key = event.key;
         const newTask = event.target.value.trim();
         if (key === 'Enter' && newTask !== '') {
+            event.target.value = '';
             await startFetching();
             const createdTask = await createTask(newTask);
             setTasks([...tasks, createdTask]);
-            event.target.value = '';
         }
     }
 
